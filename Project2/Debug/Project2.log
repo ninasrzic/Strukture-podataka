@@ -1,0 +1,3 @@
+﻿  Source.c
+c:\users\student\source\repos\project2\project2\source.c(134): warning C4047: 'return': 'Position' differs in levels of indirection from 'int'
+  Project2.vcxproj -> C:\Users\student\source\repos\Project2\Debug\Project2.exe
