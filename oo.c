@@ -1,14 +1,9 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
 #define ALLOCATION_ERROR (1)
 
 #include <stdio.h>
 #include <stdlib.h>
-
-
-//8. Napisati program koji omogućava rad s binarnim stablom pretraživanja.Treba
-//omogućiti unošenje novog elementa u stablo, ispis elemenata(inorder, preorder, postorder i
-//    level order), brisanje i pronalaženje nekog elementa.
-
+#include <stdbool.h>
 
 
 typedef struct Node Node;
@@ -26,7 +21,7 @@ int printPreOrder(Position root);
 int printPostOrder(Position root);
 int printLevelOrder(Position root);
 Position deleteElement(Position root, int element);
-Position findElement(Position root, int element);
+bool findElement(Position root, int element);
 
 int main()
 {
@@ -99,7 +94,13 @@ int main()
             int element = 0;
             printf("Enter the element to find:");
             scanf("%d", &element);
-            findElement(root, element);
+            if (findElement(root, element)) {
+                printf("Element pronaden!\n");
+            }
+            else {
+                printf("Element nije pronaden!\n");
+            }
+            //printf("%d",root);
         }
         else if (choice == 5) {
             printf("\nExiting the program\n");
@@ -220,7 +221,7 @@ Position minNode(Position root) {
     return root;
 }
 
-Position findElement(Position root, int element) {
+bool findElement(Position root, int element) {
     while (1) {
         if (root == NULL) {
             return NULL;
@@ -232,8 +233,8 @@ Position findElement(Position root, int element) {
             root = root->right;
         }
         else {
-            return root;
+            return true;
         }
     }
-    return NULL;
+    return false;
 }
